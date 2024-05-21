@@ -1,4 +1,5 @@
 import os
+import urllib
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -13,10 +14,14 @@ class Settings:
 
     username = os.getenv("DB_USERNAME")
     password = os.getenv("DB_PASSWORD")
-    server = os.getenv("D_SERVER")
+    server = os.getenv("DB_SERVER")
     database = os.getenv("DB_DATABASE")
+    driver = "ODBC Driver 18 for SQL Server"
 
+    params = urllib.parse.quote_plus(
+        f"DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 
+    DATABASE_URL = f"mssql+pyodbc:///?odbc_connect={params}"
 
 
 settings = Settings()
