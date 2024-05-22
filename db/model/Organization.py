@@ -14,7 +14,7 @@ class Organization(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.now)
 
-    def set_passowrd(self, password):
+    def set_password(self, password):
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()). decode('utf-8')
 
     def check_password(self, password):
