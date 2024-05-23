@@ -8,6 +8,6 @@ router = APIRouter()
 
 
 @router.post("/create", status_code=status.HTTP_201_CREATED)
-async def create_organization(organization_data: OrganizationCreateModel, db : Session = Depends(get_db)):
+async def create_organization(organization_data: OrganizationCreateModel, db: Session = Depends(get_db)):
     response = create_organization_logic(organization_data, db)
     return response
