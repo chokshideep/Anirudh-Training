@@ -8,7 +8,7 @@ from db.base import Base
 
 class Organization(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, index=True, unique=True)
-    uuid = Column(String(16), unique=True, default=lambda: str(uuid.uuid4()))
+    uuid = Column(String(255), unique=True, default=lambda: str(uuid.uuid4()))
     name = Column(String(255), nullable=False)
     mail_id = Column(String(256), nullable=False, unique=True)
     is_active = Column(Boolean, default=True)
